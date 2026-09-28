@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quyên - In Phan Thiết — Thông tin liên hệ</title>
+  <meta name="description" content="Trang infor một trang cho In Phan Thiết: liên hệ, địa chỉ, mạng xã hội, CMYK palette." />
+  <meta name="theme-color" content="#0e2f50" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root{
+      /* CMYK vibe */
+      --c: #00AEEF; /* C */
+      --m: #EC008C; /* M */
+      --y: #FFF200; /* Y */
+      --k: #111111; /* K */
+      /* New theme */
+      --bg: #0e2f50; /* main blue */
+      --bg2: #081e34; /* deeper blue */
+      --fg: #ffffff;
+      --card: rgba(255,255,255,.04);
+      --muted: #b7c4d1;
+      --ring: rgba(255,255,255,.18);
+      /* Button brand colors */
+      --zalo1:#5ec2ff; --zalo2:#1a9cff;
+      --fb1:#2a8cff;  --fb2:#1877f2;
+      --tel1:#ff44b8; --tel2:#ec008c;
+      --addr1:#fff176; --addr2:#ffd400;
+      --mail1:#ffffff; --mail2:#eef2f7;
+    }
+    *{box-sizing:border-box}
+    html{height:100%}
+    body{
+    margin:0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial;
+    color:#fff;
+    overflow-x:hidden;
+    min-height:100vh;
+    background:#081521;
+    position:relative;
+}
+
+/* Nền chính */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(0,174,239,.18), transparent 35%),
+    radial-gradient(circle at 80% 30%, rgba(70,130,255,.15), transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(0,80,150,.18), transparent 45%),
+    linear-gradient(135deg,#04111d,#0a2238,#102f4d,#081521);
+    background-size:200% 200%;
+    animation: bgMove 18s ease infinite;
+}
+
+/* Lớp ánh sáng */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+    repeating-linear-gradient(
+        135deg,
+        rgba(255,255,255,.015) 0px,
+        rgba(255,255,255,.015) 2px,
+        transparent 2px,
+        transparent 14px
+    );
+    opacity:.45;
+    animation: shine 20s linear infinite;
+}
+
+@keyframes bgMove{
+    0%{
+        background-position:0% 50%;
+    }
+    50%{
+        background-position:100% 50%;
+    }
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+@keyframes shine{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-120px);
+    }
+}
+    .wrapper{min-height:100%; display:grid; place-items:center; padding:16px}
+    .card{
+      width:min(600px, 100%);
+      border:1px solid var(--ring); border-radius:24px;
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+      overflow:hidden;
+    }
+    .btn{
+    position:relative;
+    overflow:hidden;
+}
+
+.btn::before{
+    content:"";
+    position:absolute;
+    left:-120%;
+    top:0;
+    width:70%;
+    height:100%;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.35),
+        transparent
+    );
+    transition:.8s;
+}
+.brand-logo{
+    animation:floatLogo 5s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+.card{
+    position:relative;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:24px;
+    padding:1px;
+    background:linear-gradient(
+        135deg,
+        rgba(0,174,239,.6),
+        rgba(255,255,255,.15),
+        rgba(0,174,239,.6)
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+            mask-composite:exclude;
+    pointer-events:none;
+}
+.btn:hover::before{
+    left:160%;
+}
+    .cmyk-strip{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; height:10px}
+    .cmyk-strip span:nth-child(1){background:var(--c)}
+    .cmyk-strip span:nth-child(2){background:var(--m)}
+    .cmyk-strip span:nth-child(3){background:var(--y)}
+    .cmyk-strip span:nth-child(4){background:var(--k)}
+
+    header{
+      display:flex; gap:18px; align-items:flex-start; justify-content:flex-start; flex-direction:column;
+      padding:20px 18px; background: transparent; border-bottom:1px solid var(--ring);
+    }
+    @media (min-width:560px){
+      header{flex-direction:row; align-items:center; justify-content:space-between; padding:24px 28px}
+    }
+   /* ================= HEADER ================= */
+
+.header{
+
+    display:flex;
+    align-items:center;
+    gap:22px;
+
+    padding:10px;
+
+    border-bottom:1px solid rgba(255,255,255,.12);
+
+}
+
+.profile-box{
+
+    width:160px;
+    height:160px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    flex-shrink:0;
+
+    background:#163756;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.profile-box img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.divider{
+
+    width:2px;
+
+    height:180px;
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.header-right{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;     /* căn giữa toàn bộ */
+    text-align:center;
+}
+
+.company-logo{
+    width:270px;
+    margin:0 auto 28px;
+    display:block;
+    margin-top:-37px;
+}
+
+.info h1{
+
+   margin-top:-83px;
+
+    color:#fff;
+
+    font-size:38px;
+
+    line-height:1.1;
+
+    font-weight:800;
+
+}
+
+.info p{
+
+    margin-top:-23px;
+
+    color:#d7d7d7;
+
+    font-size:15px;
+
+}
+@media(max-width:600px){
+
+.header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+}
+
+.divider{
+
+    display:none;
+
+}
+
+.company-logo{
+
+    width:170px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+}
+
+.profile-box{
+
+    width:180px;
+
+    height:180px; 
+
+}
+
+.info h1{
+
+    font-size:8px;
+
+    text-align:center;
+
+}
+
+.info p{
+
+    text-align:center;
+
+    font-size:14px;
+
+}
+
+.header-right{
+
+    width:100%;
+
+}
+
+}
+
+    .hero{display:grid; gap:20px; padding:20px}
+    
+
+    .hero-copy h2{font-size:clamp(22px, 5.2vw, 34px); margin:0 0 8px}
+    .hero-copy p{margin:0; color:#d7d7d7}
+
+    .badge{
+      display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px;
+      border:1px dashed var(--ring); font-size:13px; color:#dedede
+    }
+
+    .panel{
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--ring);
+      border-radius:18px; padding:18px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .contact-list{display:grid; gap:14px}
+    .row{display:flex; align-items:center; gap:12px; justify-content:space-between}
+    .row i{width:22px; text-align:center; opacity:.92}
+    .row a, .row span{color:#f0f0f0; text-decoration:none; flex:1; min-width:0; overflow-wrap:anywhere; word-break:break-word}
+    .row small{color:var(--muted)}
+
+    .actions{display:grid; grid-template-columns:1fr; gap:14px; margin-top:18px}
+    .btn{
+      display:flex; align-items:center; justify-content:flex-start; gap:12px;
+      width:100%;
+      padding:16px 18px; border-radius:14px; text-decoration:none; 
+      color:#0f1622; font-weight:700; font-size:16px; letter-spacing:.2px;
+      background: linear-gradient(180deg, var(--mail1), var(--mail2));
+      border:1px solid rgba(0,0,0,.08);
+      transition: transform .06s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease, filter .2s ease;
+      box-shadow: 0 8px 22px rgba(0,0,0,.20);
+      min-height:56px;
+    }
+    .btn i{font-size:18px; width:28px; height:28px; display:grid; place-items:center; border-radius:8px; background: rgba(0,0,0,.06)}
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.28)}
+    .btn:active{transform: translateY(0)}
+    .btn.zalo{background: linear-gradient(180deg, var(--zalo1), var(--zalo2)); color:#ffffff; border-color: rgba(26,156,255,.55)}
+    .btn.facebook{background: linear-gradient(180deg, var(--fb1), var(--fb2)); color:#ffffff; border-color: rgba(24,119,242,.55)}
+    .btn.address{background: linear-gradient(180deg, var(--addr1), var(--addr2)); color:#1a1a1a; border-color: rgba(0,0,0,.10)}
+    .btn.mail{background: linear-gradient(180deg, var(--mail1), var(--mail2)); color:#0f1622; border-color: rgba(0,0,0,.10)}
+    .btn.zalo i, .btn.facebook i{background: rgba(255,255,255,.18); color:#ffffff}
+    .btn.address i{background: rgba(0,0,0,.10); color:#1a1a1a}
+    .btn.mail i{background: #e7ebf3; color:#0f1622}
+    .btn.phone{background: linear-gradient(180deg, var(--tel1), var(--tel2)); color:#ffffff; border-color: rgba(236,0,140,.55)}
+    .btn.phone i{background: rgba(255,255,255,.18); color:#ffffff}
+    .btn.website{
+    background:linear-gradient(180deg,var(--web1),var(--web2));
+    color:#fff;
+    border-color:rgba(39,174,96,.55);
+}
+
+.btn.website i{
+    background:rgba(255,255,255,.18);
+    color:#fff;
+}
+:root{
+  --web1:#27ae60;
+  --web2:#0f8f43;
+}
+    .footer{padding:18px 28px; border-top:1px solid var(--ring); color:#cfcfcf; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .mini{
+      display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:10px; font-size:12px;
+      background:#141414; border:1px solid var(--ring); color:#eaeaea
+    }
+
+    .row + .row{border-top:1px solid var(--ring); padding-top:12px}
+
+    .actions-section{padding:0 18px 18px}
+
+    /* Toast */
+    .toast{position:fixed; inset:auto 16px 16px auto; z-index:50; pointer-events:none}
+    .toast span{display:inline-block; background:#101010; border:1px solid var(--ring); color:#e9e9e9; padding:10px 14px; border-radius:12px; opacity:0; transform: translateY(6px); transition: .25s ease}
+    .toast.show span{opacity:1; transform: translateY(0)}
+
+    /* Utility */
+    .copy-btn{appearance:none; background:transparent; border:none; color:#bdbdbd; cursor:pointer; padding:6px 8px; border-radius:8px}
+    .copy-btn:hover{background:#1b2d46; color:#fff}
+
+    .btn:focus-visible{outline:3px solid rgba(255,255,255,.9); outline-offset:2px}
+    .badge{background: rgba(255,255,255,.04)}
+
+    /* Floating call action */
+    .fab{position:fixed; right:18px; bottom:18px; width:56px; height:56px; border-radius:999px; display:grid; place-items:center;
+      background: var(--m); color:#fff; box-shadow:0 12px 24px rgba(0,0,0,.45); z-index:60; transition: transform .08s ease}
+    .fab:hover{transform: translateY(-1px)}
+
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none!important; animation:none!important}
+    }
+    /* MOBILE OVERRIDE */
+@media(max-width:600px){
+  .header{
+    flex-direction:row;
+    align-items:center;
+    gap:16px;
+    padding:20px 18px
+  }
+
+  .divider{
+    display:block;
+    width:2px;
+    height:180px;
+    flex-shrink:0
+  }
+
+  .profile-box{
+    width:160px;
+    height:160px;
+    flex-shrink:0
+  }
+
+  .header-right{
+    width:auto;
+    flex:1;
+    min-width:0;
+    align-items:center
+  }
+
+  .company-logo{
+    width:min(270px,100%);
+    margin:0 auto 18px
+  }
+
+  .info h1{
+    margin-top:-30px;
+    margin-bottom:0;
+    font-size:clamp(24px,5.8vw,40px);
+    line-height:1.1;
+    text-align:center;
+  }
+
+  .info p{
+    margin:8px 0 0;
+    text-align:center;
+    font-size:14px
+  }
+}
+
+@media(max-width:430px){
+  .header{
+    gap:10px;
+    padding:16px 12px
+  }
+
+  .profile-box{
+    width:125px;
+    height:125px
+  }
+
+  .divider{
+    height:140px
+  }
+
+  .company-logo{
+    width:180px;
+    margin-bottom:12px
+  }
+
+  .info h1{
+    font-size:26px;
+    margin-top:-30px;
+  }
+
+  .hero{
+    padding:16px 12px
+  }
+
+  .actions-section{
+    padding:0 12px 16px
+  }
+}
+
+@media(max-width:360px){
+  .profile-box{
+    width:105px;
+    height:105px
+  }
+
+  .divider{
+    height:120px
+  }
+
+  .company-logo{
+    width:150px
+  }
+
+  .info h1{
+    font-size:22px
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <article class="card" role="main">
+      <div class="cmyk-strip"><span></span><span></span><span></span><span></span></div>
+   <header class="header">
+
+    <div class="profile-box">
+        <img src="img/QUYÊN.jpg" alt="Ảnh đại diện">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="header-right">
+
+        <img src="img/logo.png" class="company-logo" alt="Logo">
+
+        <div class="info">
+            <h1>Tú Quyên</h1>
+        </div>
+
+    </div>
+
+</header>
+
+      <section class="hero" aria-label="Thông tin doanh nghiệp">
+        <div class="hero-copy">
+          <h2>Liên hệ nhanh</h2>
+          <div class="panel" style="margin-top:16px">
+            <div class="contact-list" role="list">
+              <div class="row" role="listitem">
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+                <span><strong>Lê Ngọc Tú Quyên</strong></span>
+              </div>
+              <div class="row" role="listitem">
+                <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                <a href="tel:0767005387" aria-label="Gọi 0869888470">0869 888 470</a>
+                <button class="copy-btn" title="Sao chép số" data-copy="0767 005 387"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <div class="row" role="listitem">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <a href="https://www.google.com/maps/search/?api=1&query=48%20L%C3%AA%20Qu%C3%BD%20%C4%90%C3%B4n%2C%20P.%20Ph%C3%BA%20Th%E1%BB%A7y%2C%20L%C3%A2m%20%C4%90%E1%BB%93ng" aria-label="Mở ứng dụng bản đồ">48 Lê Quý Đôn, P. Phú Thủy, Lâm Đồng</a>
+                <button class="copy-btn" title="Sao chép địa chỉ" data-copy="48 Lê Quý Đôn, P. Phú Thủy, Lâm Đồng"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <div class="row" role="listitem">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <a href="mailto:inanphanthiet@gmail.com" aria-label="Gửi email">inanphanthiet@gmail.com</a>
+                <button class="copy-btn" title="Sao chép email" data-copy="inanphanthiet@gmail.com"><i class="fa-regular fa-copy"></i></button>
+              </div>
+              <div class="row" role="listitem">
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                <a href="https://facebook.com/InNhanhPhanThiet" target="_blank" rel="noopener">https://facebook.com/InNhanhPhanThiet</a>
+              </div>
+              <div class="row" role="listitem">
+  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+  <a href="https://www.inphanthiet.vn/" target="_blank" rel="noopener">
+    https://www.inphanthiet.vn/
+  </a>
+  <button class="copy-btn" title="Sao chép website" data-copy="https://www.inphanthiet.vn/">
+    <i class="fa-regular fa-copy"></i>
+  </button>
+</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="actions-section" aria-label="Liên kết nhanh">
+        <div class="panel">
+          <div class="actions">
+            <a class="btn zalo" href="https://zalo.me/0869888470" target="_blank" rel="noopener" aria-label="Nhắn Zalo">
+              <i class="fa-solid fa-message" aria-hidden="true"></i><span>Zalo</span>
+            </a>
+            <a class="btn facebook" href="https://facebook.com/InNhanhPhanThiet" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f" aria-hidden="true"></i><span>Facebook</span>
+            </a>
+            <a class="btn phone" href="tel:0869888470" aria-label="Gọi điện">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i><span>Gọi ngay</span>
+            </a>
+            <a class="btn address" href="https://www.google.com/maps/search/?api=1&query=48%20L%C3%AA%20Qu%C3%BD%20%C4%90%C3%B4n%2C%20P.%20Ph%C3%BA%20Th%E1%BB%A7y%2C%20L%C3%A2m%20%C4%90%E1%BB%93ng" aria-label="Chỉ đường">
+              <i class="fa-solid fa-location-arrow" aria-hidden="true"></i><span>Chỉ đường</span>
+            </a>
+            <a class="btn mail" href="mailto:inanphanthiet@gmail.com" aria-label="Gửi mail">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i><span>Email</span>
+            </a>
+            <a class="btn website" href="https://www.inphanthiet.vn/" target="_blank" rel="noopener" aria-label="Website">
+    <i class="fa-solid fa-globe"></i>
+    <span>Website</span>
+</a>
+          </div>
+        </div>
+      </section>
+
+    </article>
+  </div>
+
+  <!-- SEO: Local Business structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "In Phan Thiết",
+    "image": "",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "48 Lê Quý Đôn, P. Phú Thủy",
+      "addressRegion": "Lâm Đồng",
+      "addressCountry": "VN"
+    },
+    "email": "mailto:inanphanthiet@gmail.com",
+    "telephone": "0869888470",
+    "url": "https://facebook.com/InNhanhPhanThiet",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": 0869888470"
+    }
+  }
+  </script>
+
+  <div class="toast" aria-live="polite"><span id="toast-text">Đã sao chép</span></div>
+  <script>
+    const toast = document.querySelector('.toast');
+    const toastText = document.getElementById('toast-text');
+    function showToast(text){
+      toastText.textContent = text || 'Đã sao chép';
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 1600);
+    }
+    document.querySelectorAll('.copy-btn').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        try{ await navigator.clipboard.writeText(btn.dataset.copy); showToast('Đã sao chép'); }
+        catch{ showToast('Không thể sao chép'); }
+      });
+    });
+  </script>
+  <a class="fab" href="tel:0767005387" aria-label="Gọi nhanh"><i class="fa-solid fa-phone"></i></a>
+
+</body>
+</html>
